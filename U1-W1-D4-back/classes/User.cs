@@ -5,6 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//-L'operazione di login deve richiedere una username, una password ed una conferma password.
+//Solo se la username è stata inserita e le password coincidono, l'utente verrà autenticato,
+
+//- L'operazione di logout deve consentire di dimenticare l'utente autenticato.
+//Se si richiede il logout quando un utente non è loggato, il sistema deve riproporre un messaggio di errore,
+
+//- L'operazione di verifica deve riportare la data e l'ora di quando è stato effettuato il login dell'utente.
+//Nel caso in cui venisse richiamato il metodo ma nessun utente risulta autenticato, il sistema deve riproporre un messaggio di errore.
+
+//- La lista degli accessi deve riportare la lista storica dei login dell'utente.
+
+//Affinché l'esercizio venga svolto in modo corretto,
+//deve essere implementata una classe statica 'Utente' che comprenda metodi e proprietà anch'esse statiche.
+
+
 namespace U1_W1_D4_back.classes
 {
     public static class User
@@ -18,6 +34,8 @@ namespace U1_W1_D4_back.classes
 
         static User()
         {
+
+
             RegisteredUsers = new Dictionary<string, string>
             {
                 {"Alan","1234" },
@@ -25,6 +43,8 @@ namespace U1_W1_D4_back.classes
                 {"Salvatore","123456" },
                 {"Luigi","1234567" }
             };
+
+
             AccessHistory = new List<string>();
             UserLoggedIn = null;
             DateLogin = null;
@@ -55,6 +75,7 @@ namespace U1_W1_D4_back.classes
             //{
             //    Console.WriteLine(UserLoggedIn);
             //}
+
             string? choseNum = Console.ReadLine();
 
 
@@ -99,11 +120,11 @@ namespace U1_W1_D4_back.classes
             string? password = Console.ReadLine();
 
 
-            if (username == "" && password == "")
-            {
-                Console.WriteLine("  Invalid Username!");
-                Menu();
-            }
+            //if (username == "" && password == "")
+            //{
+            //    Console.WriteLine("  Invalid Username!");
+            //    Menu();
+            //}
 
 
             if (RegisteredUsers.TryGetValue(username, out string thisPassword))
@@ -123,7 +144,7 @@ namespace U1_W1_D4_back.classes
             }
             else
             {
-                Console.WriteLine("User not Found!");
+                Console.WriteLine("  User not Found!");
                 Menu();
             }
         }
